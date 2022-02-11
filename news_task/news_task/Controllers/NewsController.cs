@@ -5,6 +5,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using PagedList.Mvc;
+using PagedList;
+
 namespace news_task.Controllers
 {
     public class NewsController : Controller
@@ -27,18 +30,32 @@ namespace news_task.Controllers
             }
             return View(n);
         }
+
         [HttpGet]
-        public ActionResult Show()
+        public ActionResult Show(int? page)
         {
+            
+            //.OrderBy(n=>n.Title)
             News_taskEntities db = new News_taskEntities();
             var newsList = db.News.ToList();
-            return View(newsList);
+            int pageNumber = (page ?? 1);
+            return View(newsList.ToPagedList(pageNumber, 3));
         }
 
+
+        //[HttpPost]
+        //public ActionResult Show(string v)
+        //{
+        //    News_taskEntities db = new News_taskEntities();
+        //    var newsList = db.News.OrderBy(n => v).ToList();
+        //    return View(newsList);
+        //}
+
+
         [HttpPost]
-        public ActionResult Show(string category,string date)
+        public ActionResult Show(string category,string date,int? page)
         {
-      
+            int pageNumber = (page ?? 1);
             if (date == "" && category !="")
             {
                 //orderby x.Category descending for sorting
@@ -48,7 +65,7 @@ namespace news_task.Controllers
                                   
                                   where x.Category.Contains(category)
                                   select x).ToList();
-                return View(byCategory);
+                return View(byCategory.ToPagedList(pageNumber, 3));
             }
             else if(category == "" && date != "")
             {
@@ -57,7 +74,7 @@ namespace news_task.Controllers
                 var byDate = (from x in db.News
                                   where x.PublishDate.Equals(oDate)
                                   select x).ToList();
-                return View(byDate);
+                return View(byDate.ToPagedList(pageNumber, 3));
             }
             else if (category != "" && date != "")
             {
@@ -67,7 +84,7 @@ namespace news_task.Controllers
                               where x.PublishDate.Equals(oDate)
                               && x.Category.Equals(category)
                               select x).ToList();
-                return View(byDate);
+                return View(byDate.ToPagedList(pageNumber, 3));
             }
             else
             {

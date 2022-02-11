@@ -160,3 +160,7 @@ D:\11Semester\ASP.net-Task\news_task\news_task\obj\Debug\news_task.csproj.CoreCo
 D:\11Semester\ASP.net-Task\news_task\news_task\obj\Debug\news_task.csproj.CopyComplete
 D:\11Semester\ASP.net-Task\news_task\news_task\obj\Debug\news_task.dll
 D:\11Semester\ASP.net-Task\news_task\news_task\obj\Debug\news_task.pdb
+D:\11Semester\ASP.net-Task\news_task\news_task\bin\PagedList.dll
+D:\11Semester\ASP.net-Task\news_task\news_task\bin\PagedList.Mvc.dll
+D:\11Semester\ASP.net-Task\news_task\news_task\bin\PagedList.xml
+D:\11Semester\ASP.net-Task\news_task\news_task\bin\PagedList.Mvc.xml

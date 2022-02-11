@@ -1,9 +1,12 @@
-﻿@model List<news_task.Models.Database.News>
+﻿@model IPagedList<news_task.Models.Database.News>
 @{
     ViewBag.Title = "Show";
 }
+@using PagedList.Mvc;
+@using PagedList;
 
 <h2>Show</h2>
+
 
 
 <form action="/News/Show" method="post">
@@ -20,30 +23,30 @@
 }
 else
 {
-<table class="table table-bordered">
-    <tr>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Category</th>
-        <th>PublishDate</th>
-        <th>Action</th>
-    </tr>
-
-    @foreach (var news in Model)
-    {
+    <table class="table table-bordered">
         <tr>
-            <td>@news.Title</td>
-            <td>@news.Description</td>
-            <td>@news.Category</td>
-            <td>@news.PublishDate.ToString("ddd,dd MMM yyyy")</td>
-            <td>
-                <a href="/News/Edit/@news.Id">Edit</a>
-                <a href="/News/Delete/@news.Id">Delete</a>
-            </td>
+            <th>@Html.DisplayNameFor(model=>model.First().Title) </th>
+            <th>@Html.DisplayNameFor(model => model.First().Description)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Category)</th>
+            <th>@Html.DisplayNameFor(model => model.First().PublishDate)</th>
+            <th>Action</th>
         </tr>
-    }
 
-</table>
+        @foreach (var news in Model)
+        {
+            <tr>
+                <td>@news.Title</td>
+                <td>@news.Description</td>
+                <td>@news.Category</td>
+                <td>@news.PublishDate.ToString("ddd,dd MMM yyyy")</td>
+                <td>
+                    <a href="/News/Edit/@news.Id">Edit</a>
+                    <a href="/News/Delete/@news.Id">Delete</a>
+                </td>
+            </tr>
+        }
 
+    </table>
+    @Html.PagedListPager(Model, page => Url.Action("Show", "News", new {page, search=Request.QueryString["search"]}))
 }
 
