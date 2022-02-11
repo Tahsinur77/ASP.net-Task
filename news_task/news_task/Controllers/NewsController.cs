@@ -41,9 +41,12 @@ namespace news_task.Controllers
       
             if (date == "" && category !="")
             {
+                //orderby x.Category descending for sorting
+
                 News_taskEntities db = new News_taskEntities();
                 var byCategory = (from x in db.News
-                                  where x.Category.Equals(category)
+                                  
+                                  where x.Category.Contains(category)
                                   select x).ToList();
                 return View(byCategory);
             }

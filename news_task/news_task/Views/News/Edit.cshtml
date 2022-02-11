@@ -10,7 +10,7 @@
     <input type="text" placeholder="Title" name="Title" value="@Model.Title" />
     <input type="text" placeholder="Description" name="Description" value="@Model.Description" />
     <input type="text" placeholder="Category" name="Category" value="@Model.Category" />
-    <input type="date" placeholder="PublishDate" name="PublishDate" value="2022-02-08" />
+    <input type="date" placeholder="PublishDate" name="PublishDate" value="@Model.PublishDate.ToString("yyyy-MM-dd")" />
     <input type="submit" value="Update" />
 </form>
 

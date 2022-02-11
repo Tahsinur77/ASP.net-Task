@@ -19,5 +19,10 @@ namespace news_task.Models.Database
         public string Description { get; set; }
         public string Category { get; set; }
         public System.DateTime PublishDate { get; set; }
+
+        public bool Empty
+        {
+            get { return (Id == 0 && string.IsNullOrWhiteSpace(Title) && string.IsNullOrWhiteSpace(Description) && PublishDate == default(DateTime)); }
+        }
     }
 }
