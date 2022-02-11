@@ -39,7 +39,7 @@ namespace news_task.Controllers
         public ActionResult Show(string category,string date)
         {
       
-            if (date == "")
+            if (date == "" && category !="")
             {
                 News_taskEntities db = new News_taskEntities();
                 var byCategory = (from x in db.News
@@ -47,7 +47,7 @@ namespace news_task.Controllers
                                   select x).ToList();
                 return View(byCategory);
             }
-            else if(category == "")
+            else if(category == "" && date != "")
             {
                 DateTime oDate = Convert.ToDateTime(date);
                 News_taskEntities db = new News_taskEntities();

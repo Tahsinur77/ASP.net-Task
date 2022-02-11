@@ -7,7 +7,7 @@
 
 
 <form action="/News/Show" method="post">
-    <input type="text" placeholder="Search by date" name="date" />
+    <input type="date" placeholder="Search by date" name="date" value="@DateTime.MinValue"/>
     <input type="text" placeholder="Search by category" name="category" value=""/>
     <input type="submit" value="Search" />
 </form>
