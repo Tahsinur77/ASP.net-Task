@@ -1,0 +1,41 @@
+﻿@model List<news_task.Models.Database.News>
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Show</h2>
+
+
+<form action="/News/Show" method="post">
+    <input type="text" placeholder="Search by date" name="date" />
+    <input type="text" placeholder="Search by category" name="category" value=""/>
+    <input type="submit" value="Search" />
+</form>
+
+
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>PublishDate</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach(var news in Model)
+    {
+        <tr>
+            <td>@news.Title</td>
+            <td>@news.Description</td>
+            <td>@news.Category</td>
+            <td>@news.PublishDate</td>
+            <td>
+                <a href="/News/Edit/@news.Id">Edit</a>
+                <a href="/News/Delete/@news.Id">Delete</a>
+            </td>
+        </tr>
+    }
+    
+</table>
