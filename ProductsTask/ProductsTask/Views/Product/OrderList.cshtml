@@ -1,0 +1,34 @@
+﻿@model List<ProductsTask.Models.Database.Order>
+@{
+    ViewBag.Title = "OrderList";
+}
+
+<h2>OrderList</h2>
+
+@foreach(var order  in Model)
+{
+    <h2>Order Number: @order.OrderId</h2>
+    <h3>Order By: @order.Customer.Name</h3>
+    <h3>status: @order.Status</h3>
+
+    <hr />
+    <h3>OderList</h3>
+
+    <table class="table table-bordered">
+        <tr>
+            <th>Number</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Qty</th>
+        </tr>
+        @foreach (var orderDetails in order.OrderDetails)
+        {
+            <tr>
+                <td>@orderDetails.Id</td>
+                <td>@orderDetails.Product.Name</td>
+                <td>@orderDetails.Product.Price</td>
+                <td>@orderDetails.OrderQty</td>
+            </tr>
+        }
+    </table>
+}
