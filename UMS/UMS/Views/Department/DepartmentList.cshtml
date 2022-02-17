@@ -1,0 +1,16 @@
+﻿@model List<UMS.Models.Entities.DepartmentModel>
+@{
+    ViewBag.Title = "DepartmentList";
+    Layout = "~/Views/Shared/_UMSLayout.cshtml";
+}
+
+<h2>Department Lists</h2>
+
+@Model.Count
+
+<ol>
+    @foreach (var dept in Model)
+    {
+        <li>@dept.Name</li>
+    }
+</ol>
