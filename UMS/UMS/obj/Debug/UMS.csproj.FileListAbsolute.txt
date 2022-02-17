@@ -79,3 +79,5 @@ D:\11Semester\ASP.net-Task\UMS\UMS\obj\Debug\UMS.csproj.CoreCompileInputs.cache
 D:\11Semester\ASP.net-Task\UMS\UMS\obj\Debug\UMS.csproj.CopyComplete
 D:\11Semester\ASP.net-Task\UMS\UMS\obj\Debug\UMS.dll
 D:\11Semester\ASP.net-Task\UMS\UMS\obj\Debug\UMS.pdb
+D:\11Semester\ASP.net-Task\UMS\UMS\bin\AutoMapper.dll
+D:\11Semester\ASP.net-Task\UMS\UMS\bin\AutoMapper.xml

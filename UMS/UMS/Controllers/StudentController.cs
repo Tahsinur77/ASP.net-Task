@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,7 @@ namespace UMS.Controllers
 {
     public class StudentController : Controller
     {
+
         // GET: Student
 
         [HttpGet]
@@ -36,17 +38,27 @@ namespace UMS.Controllers
             UniversityEntities db = new UniversityEntities();
             var studentList = db.Students.ToList();
             List<StudentDepartmentModel> stuList = new List<StudentDepartmentModel>();
+            
 
-            foreach(var student in studentList)
+            foreach (var student in studentList)
             {
                 DepartmentModel dept = new DepartmentModel();
                 dept.Name = student.Department.Name;
                 dept.Id = student.Department.Id;
 
+                
+
+
+                //by mapper
+                //DepartmentModel deptMapper = _mapper.Map<DepartmentModel>(student.Department);
+                //StudentDepartmentModel stuMapper = _mapper.Map<StudentDepartmentModel>(student);
+
                 StudentDepartmentModel stu = new StudentDepartmentModel();
                 stu.Name = student.Name;
                 stu.DeptId = student.DeptId;
                 stu.Dept = dept;
+
+
 
                 stuList.Add(stu);
 
